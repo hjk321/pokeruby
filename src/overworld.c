@@ -49,6 +49,7 @@
 #include "constants/maps.h"
 #include "constants/songs.h"
 #include "constants/species.h"
+#include "nuzlocke_util.h"
 
 #ifdef SAPPHIRE
 #define LEGENDARY_MUSIC MUS_WEATHER_KYOGRE  // Heavy Rain
@@ -213,7 +214,7 @@ static void DoWhiteOut(void)
     ScrSpecial_HealPlayerParty();
     Overworld_ResetStateAfterWhiteOut();
     Overworld_SetWarpDestToLastHealLoc();
-    WarpIntoMap();
+    GameOver();
 }
 
 void Overworld_ResetStateAfterFly(void)

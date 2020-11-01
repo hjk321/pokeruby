@@ -9,6 +9,7 @@
 #include "task.h"
 #include "text.h"
 #include "constants/species.h"
+#include "nuzlocke_util.h"
 
 extern u16 gSpecialVar_Result;
 extern u8 fieldPoisonText_PokemonFainted[];
@@ -92,7 +93,10 @@ static void Task_WhiteOut(u8 taskId)
         break;
     case 2:  // done checking all mons
         if (AllMonsFainted())
+        {
             gSpecialVar_Result = 1;
+            GameOver();
+        }
         else
             gSpecialVar_Result = 0;
         EnableBothScriptContexts();

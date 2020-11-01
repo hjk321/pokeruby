@@ -18,6 +18,7 @@
 #include "mail_data.h"
 #include "naming_screen.h"
 #include "pokemon_storage_system.h"
+#include "event_data.h"
 
 // Static type declarations
 
@@ -887,14 +888,39 @@ void sub_8097390(void)
 void sub_809746C(void)
 {
     u8 r4;
+    struct Pokemon *pokemon;
 
     switch (gPokemonStorageSystemPtr->unk_0004)
     {
     case 0:
+        // NUZLOCKE Prevent dead pokemon from being deposited
+        pokemon = gPlayerParty + gSpecialVar_0x8004;
+        if (GetMonData(pokemon, MON_DATA_HP) == 0)
+        {
+            PlaySE(SE_FAILURE);
+            PrintStorageActionText(PC_TEXT_DEPOSIT_DEAD_MON);
+            gPokemonStorageSystemPtr->unk_0004 = 86;
+            break;
+        }
+
         PrintStorageActionText(PC_TEXT_DEPOSIT_IN_WHICH_BOX);
         sub_8096264(&gPokemonStorageSystemPtr->unk_2370, 0x0007, 0xdaca, 3);
         sub_809634C(gUnknown_0203847E);
         gPokemonStorageSystemPtr->unk_0004++;
+        break;
+    case 86:
+        if (gMain.newKeys & (A_BUTTON | B_BUTTON))
+        {
+            PrintStorageActionText(PC_TEXT_RELEASE_INSTEAD);
+            gPokemonStorageSystemPtr->unk_0004++;
+        }
+        break;
+    case 87:
+        if (gMain.newKeys & (A_BUTTON | B_BUTTON))
+        {
+            sub_8098A5C();
+            SetPSSCallback(sub_8096C84);
+        }
         break;
     case 1:
         r4 = sub_8096368();
@@ -1940,7 +1966,9 @@ const struct StorageAction gPCStorageActionTexts[] =
     {PCText_CameBack, 1},
     {PCText_Worried, 0},
     {PCText_Surprise, 0},
-    {PCText_PleaseRemoveMail, 0}
+    {PCText_PleaseRemoveMail, 0},
+    {PCText_DepositDeadMon, 0},
+    {PCText_ReleaseInstead, 0}
 };
 
 void PrintStorageActionText(u8 index)

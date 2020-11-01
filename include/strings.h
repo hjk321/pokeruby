@@ -725,6 +725,8 @@ extern const u8 PCText_CameBack[];
 extern const u8 PCText_Worried[];
 extern const u8 PCText_Surprise[];
 extern const u8 PCText_PleaseRemoveMail[];
+extern const u8 PCText_DepositDeadMon[];
+extern const u8 PCText_ReleaseInstead[];
 extern const u8 PCText_Cancel2[];
 extern const u8 PCText_Deposit[];
 extern const u8 PCText_Withdraw[];

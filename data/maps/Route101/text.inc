@@ -37,3 +37,14 @@ Route101_Text_16D2CB:: @ 816D2CB
 Route101_Text_16D349:: @ 816D349
 	.string "ROUTE 101\n"
 	.string "{0x79} OLDALE TOWN$"
+
+Route101_Text_NuzlockeTip::
+	.string "NUZLOCKE TIP:\p"
+	.string "This hack automatically tracks your\n"
+	.string "first wild encounter on each route.\p"
+	.string "But the rules on catching don't take\n"
+	.string "effect until you get POKéBALLs.\p"
+	.string "Everything else takes effect starting\n"
+	.string "now, however, so be careful!\p"
+	.string "Thank you for playing my hack. Good luck! \n"
+	.string "- hjk321$"

@@ -101,7 +101,9 @@
       "flag": "FLAG_HIDE_BOY_ROUTE101"
     }
   ],
-  "warp_events": [],
+  "warp_events": [
+
+  ],
   "coord_events": [
     {
       "type": "trigger",
@@ -183,6 +185,24 @@
       "var": "VAR_ROUTE101_STATE",
       "var_value": "2",
       "script": "Route101_EventScript_14E9E4"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_ROUTE101_STATE",
+      "var_value": "3",
+      "script": "Route101_NuzlockeTip"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_ROUTE101_STATE",
+      "var_value": "3",
+      "script": "Route101_NuzlockeTip"
     }
   ],
   "bg_events": [

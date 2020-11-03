@@ -43,7 +43,7 @@
 #define POKEBLOCKS_COUNT    40
 #define OBJECT_EVENTS_COUNT 16
 #define BERRY_TREES_COUNT   128
-#define FLAGS_COUNT         288
+#define FLAGS_COUNT         388
 #define VARS_COUNT          256
 #define MAIL_COUNT          16
 #define SECRET_BASES_COUNT  20

@@ -654,6 +654,8 @@ extern u16 gBattleTypeFlags;
 extern u8 gUnknown_02023A14_50;
 extern u16 gTrainerBattleOpponent;
 
+extern bool8 gNuzPreventWildCatch;
+
 // src/battle_bg.o
 void sub_800D6D4();
 void ApplyPlayerChosenFrameToBattleMenu();

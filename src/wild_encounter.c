@@ -15,6 +15,7 @@
 #include "script.h"
 #include "constants/species.h"
 #include "tv.h"
+#include "nuzlocke_util.h"
 
 #include "data/wild_encounters.h"
 
@@ -230,6 +231,7 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
     return wildMonIndex;
 }
 
+// TODO Scaled Leveling
 static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon)
 {
     u8 min;

@@ -1366,12 +1366,12 @@ const u16 gFirstTurnOfTwoStringIds[] =
 
 const u16 gWrappedStringIds[] =
 {
-    BATTLE_TEXT_SqueezedBind, 
-    BATTLE_TEXT_Wrapped, 
-    BATTLE_TEXT_TrappedVortex, 
-    BATTLE_TEXT_Clamped, 
-    BATTLE_TEXT_TrappedVortex, 
-    BATTLE_TEXT_SandTombTrapped, 
+    BATTLE_TEXT_SqueezedBind,
+    BATTLE_TEXT_Wrapped,
+    BATTLE_TEXT_TrappedVortex,
+    BATTLE_TEXT_Clamped,
+    BATTLE_TEXT_TrappedVortex,
+    BATTLE_TEXT_SandTombTrapped,
 };
 
 const u16 gMistUsedStringIds[] =
@@ -1499,10 +1499,10 @@ const u16 gWeatherContinuesStringIds[] =
 
 const u16 gInobedientStringIds[] =
 {
-    BATTLE_TEXT_LoafingAround, 
-    BATTLE_TEXT_WontObey, 
-    BATTLE_TEXT_TurnedAway, 
-    BATTLE_TEXT_NotNotice, 
+    BATTLE_TEXT_LoafingAround,
+    BATTLE_TEXT_WontObey,
+    BATTLE_TEXT_TurnedAway,
+    BATTLE_TEXT_NotNotice,
 };
 
 const u16 gSafariGetNearStringIds[] =

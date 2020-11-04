@@ -91,5 +91,6 @@ void TryUpdateRandomTrainerRematches(u16, u16);
 s32 DoesSomeoneWantRematchIn(u16 mapGroup, u16 mapNum);
 s32 IsRematchTrainerIn(u16 mapGroup, u16 mapNum);
 u16 GetRematchTrainerId(u16 a1);
+bool8 IsWildBattleScripted();
 
 #endif // GUARD_BATTLE_SETUP_H

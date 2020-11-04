@@ -27,6 +27,7 @@
 #include "naming_screen.h"
 #include "ewram.h"
 #include "util.h"
+#include "battle_setup.h"
 
 // TODO: put this into battle_controllers.h
 
@@ -213,6 +214,7 @@ extern u8 BattleScript_TrainerBallBlock[];
 extern u8 BattleScript_WallyBallThrow[];
 extern u8 BattleScript_SuccessBallThrow[];
 extern u8 BattleScript_ShakeBallThrow[];
+extern u8 BattleScript_ShakeBallThrowNuzlocke[];
 extern u8 BattleScript_AllStatsUp[];
 extern u8 BattleScript_AtkDefDown[];
 extern u8 BattleScript_SAtkDown2[];
@@ -13443,7 +13445,15 @@ void atkEF_handleballthrow(void)
                     gBattleResults.usedBalls[gLastUsedItem - ITEM_ULTRA_BALL]++;
             }
         }
-        if (odds > 254) //poke caught
+        // NUZLOCKE Check whether we can even attempt a catch
+        if (gNuzPreventWildCatch && (gBattleTypeFlags & BATTLE_TYPE_WILD) && !IsWildBattleScripted())
+        {
+            BtlController_EmitBallThrowAnim(0, 0);
+            MarkBattlerForControllerExec(gActiveBattler);
+            gBattleCommunication[MULTISTRING_CHOOSER] = 0; // 0 Shakes
+            gBattlescriptCurrInstr = BattleScript_ShakeBallThrowNuzlocke;
+        }
+        else if (odds > 254) //poke caught
         {
             BtlController_EmitBallThrowAnim(0, 4);
             MarkBattlerForControllerExec(gActiveBattler);

@@ -94,6 +94,11 @@ BattleScript_ShakeBallThrow:: @ 81D9F0A
 	waitmessage 64
 	setbyte gBattleOutcome, B_OUTCOME_NO_SAFARI_BALLS
 
+BattleScript_ShakeBallThrowNuzlocke::
+	printstring BATTLE_TEXT_Failed
+	waitmessage 64
+	finishaction
+
 BattleScript_ShakeBallThrowEnd: @ 81D9F34
 	finishaction
 

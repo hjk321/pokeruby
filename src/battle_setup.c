@@ -27,6 +27,7 @@
 #include "task.h"
 #include "text.h"
 #include "trainer.h"
+#include "nuzlocke_util.h"
 #include "constants/battle_setup.h"
 #include "constants/map_types.h"
 #include "constants/maps.h"
@@ -48,6 +49,8 @@ EWRAM_DATA static u8 *sTrainerVictorySpeech = NULL;
 EWRAM_DATA static u8 *sTrainerCannotBattleSpeech = NULL;
 EWRAM_DATA static u8 *sTrainerBattleScriptRetAddr = NULL;
 EWRAM_DATA static u8 *sTrainerBattleEndScript = NULL;
+
+EWRAM_DATA bool8 gNuzPreventWildCatch = 0;
 
 extern u16 gBattleTypeFlags;
 extern u16 gSpecialVar_LastTalked;
@@ -508,6 +511,11 @@ static void CreateBattleStartTask(u8 transition, u16 song)
 
 void BattleSetup_StartWildBattle(void)
 {
+    // NUZLOCKE Determine if catchable this battle then set flag
+    gNuzPreventWildCatch = CurrNuzEncGet();
+    if (FlagGet(FLAG_ADVENTURE_STARTED))
+        CurrNuzEncSet();
+
     if (GetSafariZoneFlag())
         DoSafariBattle();
     else
@@ -1481,4 +1489,9 @@ void SetTrainerFlagsAfterTrainerEyeRematch(void)
 {
     ClearTrainerEyeRematchFlag(gTrainerEyeTrainers, gTrainerBattleOpponent);
     SetCurrentTrainerBattledFlag();
+}
+
+bool8 IsWildBattleScripted()
+{
+    return gMain.savedCallback == CB2_EndScriptedWildBattle;
 }

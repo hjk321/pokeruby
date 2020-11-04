@@ -5,6 +5,7 @@
 #include "save.h"
 #include "event_data.h"
 #include "constants/nuzlocke_flags.h"
+#include "pokemon.h"
 
 void GameOver(void)
 {
@@ -46,4 +47,23 @@ void CurrNuzEncSet()
 void CurrNuzEncClear()
 {
     NuzEncClear(NuzCurrentMapSec());
+}
+
+u8 CountAlivePartyMons()
+{
+    u16 i;
+    u16 count;
+
+    for (i = 0, count = 0; i < PARTY_SIZE; i++)
+    {
+        struct Pokemon *pokemon = gPlayerParty + i;
+        if (GetMonData(pokemon, MON_DATA_SPECIES) != 0 && !GetMonData(pokemon, MON_DATA_IS_EGG) && GetMonData(pokemon, MON_DATA_HP) != 0)
+            count++;
+    }
+    return count;
+}
+
+u8 CountDeadPartyMons()
+{
+    return gSaveBlock1.playerPartyCount - CountAlivePartyMons();
 }

@@ -27,6 +27,7 @@
 #include "constants/event_object_movement.h"
 #include "constants/field_effects.h"
 #include "constants/songs.h"
+#include "nuzlocke_util.h"
 
 #define subsprite_table(ptr) {.subsprites = ptr, .subspriteCount = (sizeof ptr) / (sizeof(struct Subsprite))}
 
@@ -626,7 +627,7 @@ bool8 FldEff_PokecenterHeal(void)
     u8 nPokemon;
     struct Task *task;
 
-    nPokemon = CalculatePlayerPartyCount();
+    nPokemon = CountAlivePartyMons();
     task = &gTasks[CreateTask(Task_PokecenterHeal, 0xff)];
     task->data[1] = nPokemon;
     task->data[2] = 0x5d;

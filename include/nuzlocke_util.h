@@ -10,5 +10,7 @@ u8 NuzCurrentMapSec();
 bool8 CurrNuzEncGet();
 void CurrNuzEncSet();
 void CurrNuzEncClear();
+u8 CountAlivePartyMons();
+u8 CountDeadPartyMons();
 
 #endif // GUARD_NUZLOCKEUTIL_H
